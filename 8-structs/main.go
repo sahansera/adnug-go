@@ -7,6 +7,8 @@ type Person struct {
 	age  int
 }
 
+// Q: How can we add behaviours to this?
+
 func main() {
 	person := Person{}
 	fmt.Println(person)
