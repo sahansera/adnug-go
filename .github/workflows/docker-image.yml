@@ -12,8 +12,9 @@ jobs:
 
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        os: [linux,windows]
+        os: [linux]
         arch: [amd64,arm]
     env:
       working-directory: ./12-multi-arch-deployments
