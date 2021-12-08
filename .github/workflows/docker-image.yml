@@ -20,6 +20,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - uses: docker/setup-buildx-action@v1
+      id: buildx
+      with:
+        install: true
     - name: Build the Docker image
       run: docker build --build-arg TARGETOS="${{ matrix.os }}" --build-arg TARGETARCH="${{ matrix.arch }}" --tag sahansera/hello-go:$(date +%s) --file Dockerfile .
       working-directory: ${{ env.working-directory }}
