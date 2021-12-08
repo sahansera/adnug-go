@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build 12-multi-arch-deployments/ --file Dockerfile --tag sahansera/hello-go:$(date +%s)
+      run: docker build . --file 12-multi-arch-deployments/Dockerfile --tag sahansera/hello-go:$(date +%s)
