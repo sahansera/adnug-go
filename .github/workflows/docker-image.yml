@@ -11,11 +11,15 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [linux,windows]
+        arch: [amd64,arm]
     env:
       working-directory: ./12-multi-arch-deployments
 
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag sahansera/hello-go:$(date +%s)
-      working-directory: ${{env.working-directory}}
+      run: docker build --build-arg TARGETOS=${{ matrix.os }} --build-arg TARGETARCH=${{ matrix.arch }} --tag sahansera/hello-go:$(date +%s) --file Dockerfile .
+      working-directory: ${{ env.working-directory }}
